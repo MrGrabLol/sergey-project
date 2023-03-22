@@ -159,6 +159,7 @@ img {
 .picture-grid-container {
     display: flex;
     justify-content: center;
+    width: 100vw;
 }
 
 .picture-grid {
@@ -166,8 +167,27 @@ img {
     width: 70%;
     margin-top: 80px;
     display: grid;
-    grid-gap: 18px;
+    grid-gap: 2%;
     /*border: 2px solid red;*/
+}
+
+@media only screen and (max-width: 1200px) {
+    .picture-grid {
+        grid-template-columns: repeat(auto-fill, 40%);
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .picture-grid {
+        grid-template-columns: repeat(auto-fill, 47.9%);
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .picture-grid {
+        grid-template-columns: repeat(auto-fill, 100%);
+        grid-gap: 0;
+    }
 }
 
 .picture-grid-container img {
