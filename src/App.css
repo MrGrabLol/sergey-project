@@ -11,7 +11,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /*background-color: black;*/
 }
 
 .input-container {
@@ -22,7 +21,7 @@
     flex-direction: row;
 }
 
-@media only screen and (max-width: 840px) {
+@media only screen and (max-width: 850px) {
     .input-container {
         flex-direction: column;
     }
@@ -36,11 +35,13 @@
     margin-right: 15px;
     font-size: 24px;
     text-align: center;
+    box-sizing: border-box;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 850px) {
     .input-container input {
         width: 100%;
+        margin: 0;
     }
 }
 
@@ -53,6 +54,13 @@
     border: 1px solid black;
     font-size: 16px;
     transition: 0.3s background-color, 0.3s opacity, 0.3s color, 0.3s box-shadow, 0.3s border;
+}
+
+@media only screen and (max-width: 850px) {
+    .input-container button {
+        margin-top: 10px;
+        margin-left: 0;
+    }
 }
 
 .input-container button:active {
@@ -77,11 +85,16 @@
 .resolution-switch {
     width: fit-content;
     height: 40px;
-    /*border: 1px solid black;*/
     display: flex;
     flex-direction: row;
     border-radius: 18px;
     align-items: center;
+}
+
+@media only screen and (max-width: 850px) {
+    .resolution-switch {
+        margin-top: 10px;
+    }
 }
 
 .switch-btn {
@@ -89,7 +102,6 @@
     width: 33.3%;
     height: 100%;
     background-color: #ececec;
-    /*text-align: center;*/
     align-items: center;
     transition: 0.3s opacity, 0.3s background-color, 0.3s color, 0.3s box-shadow;
 }
@@ -107,7 +119,6 @@
     border-top-left-radius: 18px;
     padding-left: 10px;
     padding-right: 10px;
-    /*border-right: 1px solid black;*/
 }
 
 #span-two {
@@ -115,9 +126,6 @@
     padding-right: 10px;
     margin-left: 1px;
     margin-right: 1px;
-    /*border: 1px solid white;*/
-    /*border-right: 1px solid white;*/
-    /*border-left: 1px solid white;*/
 }
 
 #span-three {
@@ -125,7 +133,6 @@
     padding-left: 10px;
     border-top-right-radius: 18px;
     border-bottom-right-radius: 18px;
-    /*border-left: 1px solid black;*/
 }
 
 .active {
@@ -168,7 +175,6 @@ img {
     margin-top: 80px;
     display: grid;
     grid-gap: 2%;
-    /*border: 2px solid red;*/
 }
 
 @media only screen and (max-width: 1200px) {
@@ -258,12 +264,9 @@ img {
 
 .lds-grid {
     display: inline-block;
-    /*display: flex;*/
     position: relative;
     width: 80px;
     height: 80px;
-    /*justify-content: center;*/
-    /*align-items: center;*/
 }
 .lds-grid div {
     position: absolute;
