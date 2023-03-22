@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import axios, {AxiosError} from "axios";
 import FileSaver from 'file-saver'
@@ -13,17 +13,16 @@ function App() {
     const [input, setInput] = useState<string>('')
     const [sizeInput, setSizeInput] = useState<string>('')
     const [error, setError] = useState<string>('')
+    const [fetchError, setFetchError] = useState<string>('')
     const [loading, setLoading] = useState(false)
-    const [clicked, setClicked] = useState(false)
     const [urlResponse, setUrlResponse] = useState<IImageResponse>({prompt: '', resolution: '', url: ''})
     const [urlContainer, setUrlContainer] = useState<IImageResponse[]>([])
 
     async function sendRequest() {
-        setClicked(true)
         setError('')
         setLoading(true)
         try {
-            const response = await axios.post('http://localhost:8080/image', {
+            const response = await axios.post('http://51.250.31.210:9090/image', {
                 prompt: input,
                 size: sizeInput,
                 amount: 1
@@ -31,14 +30,26 @@ function App() {
             setUrlResponse(response.data)
             setUrlContainer([...urlContainer, response.data])
             setLoading(false)
-            setClicked(false)
         } catch (e: unknown) {
             setLoading(false)
-            setClicked(false)
             const error = e as AxiosError
             setError(error.message)
         }
     }
+
+    async function getRequest() {
+        try {
+            const response = await axios.get('http://51.250.31.210:9090/image')
+            setUrlContainer(response.data)
+        } catch (e: unknown) {
+            const error = e as AxiosError
+            setFetchError(error.message)
+        }
+    }
+
+    useEffect(() => {
+        getRequest()
+    }, [])
 
     const handleClick = () => {
         FileSaver.saveAs(urlResponse.url, 'image.png')
@@ -107,17 +118,23 @@ function App() {
                         </div>
                     }
                 </div>
-                <div className='picture-grid-container'>
-                    <div className='picture-grid'>
-                        {urlContainer.map((image, index) => <div className='img-wrap'>
-                            <img src={image.url} alt='saved' key={index}/>
-                            <div className='img-prompt'>
-                                <h2>{image.prompt}</h2>
-                                <h2>{image.resolution}</h2>
-                            </div>
-                        </div>)}
+                {
+                    !fetchError &&
+                    <div className='picture-grid-container'>
+                        <div className='picture-grid'>
+                            {urlContainer.map((image, index) => <div className='img-wrap'>
+                                <img src={image.url} alt='saved' key={index}/>
+                                <div className='img-prompt'>
+                                    <h2>{image.prompt}</h2>
+                                    <h2>{image.resolution}</h2>
+                                </div>
+                            </div>)}
+                        </div>
                     </div>
-                </div>
+                }
+                {
+                    fetchError && <h2 style={{color: 'red'}}>{fetchError}</h2>
+                }
             </div>
         </div>
     );
