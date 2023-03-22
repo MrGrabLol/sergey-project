@@ -22,6 +22,12 @@
     flex-direction: row;
 }
 
+@media only screen and (max-width: 800px) {
+    .input-container {
+        flex-direction: column;
+    }
+}
+
 .input-container input {
     width: 850px;
     height: 40px;
@@ -30,6 +36,12 @@
     margin-right: 15px;
     font-size: 24px;
     text-align: center;
+}
+
+@media only screen and (max-width: 800px) {
+    .input-container input {
+        width: 100%;
+    }
 }
 
 .input-container button {
@@ -165,8 +177,8 @@ img {
 
 .img-wrap {
     position: relative;
-    width: 325px;
-    height: 325px;
+    width: 327px;
+    height: 327px;
 }
 
 .img-prompt {
@@ -211,7 +223,12 @@ img {
     box-shadow: 0 0 11px rgba(33,33,33,.4);
 }
 
+img {
+    border: 1px solid black;
+}
+
 /*loader*/
+
 .loader-container {
     width: 100%;
     display: flex;
