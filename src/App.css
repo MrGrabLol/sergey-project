@@ -1,38 +1,291 @@
-.App {
-  text-align: center;
+.app {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+    margin-top: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*background-color: black;*/
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.input-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.input-container input {
+    width: 850px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 18px;
+    margin-right: 15px;
+    font-size: 24px;
+    text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+.input-container button {
+    margin-left: 15px;
+    width: 160px;
+    background-color: white;
+    height: 40px;
+    border-radius: 18px;
+    border: 1px solid black;
+    font-size: 16px;
+    transition: 0.3s background-color, 0.3s opacity, 0.3s color, 0.3s box-shadow, 0.3s border;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input-container button:active {
+    color: deepskyblue;
+    background-color: white;
+    border: 1px solid deepskyblue;
+}
+
+.input-container button:disabled {
+    background-color: #dcdcdc;
+}
+
+.input-container button:hover:not(:disabled, :active) {
+    cursor: pointer;
+    opacity: 0.89;
+    background-color: deepskyblue;
+    color: white;
+    box-shadow: 0 0 11px rgba(33,33,33,.4);
+    border: none;
+}
+
+.resolution-switch {
+    width: fit-content;
+    height: 40px;
+    /*border: 1px solid black;*/
+    display: flex;
+    flex-direction: row;
+    border-radius: 18px;
+    align-items: center;
+}
+
+.switch-btn {
+    display: flex;
+    width: 33.3%;
+    height: 100%;
+    background-color: #ececec;
+    /*text-align: center;*/
+    align-items: center;
+    transition: 0.3s opacity, 0.3s background-color, 0.3s color, 0.3s box-shadow;
+}
+
+.switch-btn:hover {
+    cursor: pointer;
+    opacity: 0.89;
+    background-color: deepskyblue;
+    color: white;
+    box-shadow: 0 0 11px rgba(33,33,33,.4);
+}
+
+#span-one {
+    border-bottom-left-radius: 18px;
+    border-top-left-radius: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+    /*border-right: 1px solid black;*/
+}
+
+#span-two {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 1px;
+    margin-right: 1px;
+    /*border: 1px solid white;*/
+    /*border-right: 1px solid white;*/
+    /*border-left: 1px solid white;*/
+}
+
+#span-three {
+    padding-right: 10px;
+    padding-left: 10px;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+    /*border-left: 1px solid black;*/
+}
+
+.active {
+    background-color: white;
+    color: deepskyblue;
+    border: 1px solid deepskyblue;
+}
+
+.picture-text-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+
+img {
+    border-radius: 18px;
+}
+
+.text {
+    width: 20%;
+    margin-left: 20px;
+}
+
+.picture {
+    width: 512px;
+    height: 512px;
+}
+
+.picture-grid-container {
+    display: flex;
+    justify-content: center;
+}
+
+.picture-grid {
+    grid-template-columns: repeat(auto-fill, 32%);
+    width: 70%;
+    margin-top: 80px;
+    display: grid;
+    grid-gap: 18px;
+    /*border: 2px solid red;*/
+}
+
+.picture-grid-container img {
+    width: 325px;
+    height: 325px;
+}
+
+.img-wrap {
+    position: relative;
+    width: 325px;
+    height: 325px;
+}
+
+.img-prompt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 191, 255, 0.71);
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s, box-shadow 0.3s;
+    border-radius: 18px;
+}
+
+.img-wrap:hover .img-prompt {
+    visibility: visible;
+    opacity: 1;
+    box-shadow: 0 0 11px rgba(33,33,33,.4);
+}
+
+.text button {
+    width: 120px;
+    height: 30px;
+    font-size: 18px;
+    border-radius: 18px;
+    border: none;
+    background-color: deepskyblue;
+    color: white;
+    transition: 0.3s background-color, 0.25s border, 0.3s color, 0.3s box-shadow;
+}
+
+.text button:hover {
+    background-color: white;
+    color: deepskyblue;
+    border: 1px solid deepskyblue;
+    box-shadow: 0 0 11px rgba(33,33,33,.4);
+}
+
+/*loader*/
+.loader-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.lds-grid {
+    display: inline-block;
+    /*display: flex;*/
+    position: relative;
+    width: 80px;
+    height: 80px;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+}
+.lds-grid div {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #405fef;
+    animation: lds-grid 1.2s linear infinite;
+}
+.lds-grid div:nth-child(1) {
+    top: 8px;
+    left: 8px;
+    animation-delay: 0s;
+}
+.lds-grid div:nth-child(2) {
+    top: 8px;
+    left: 32px;
+    animation-delay: -0.4s;
+}
+.lds-grid div:nth-child(3) {
+    top: 8px;
+    left: 56px;
+    animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(4) {
+    top: 32px;
+    left: 8px;
+    animation-delay: -0.4s;
+}
+.lds-grid div:nth-child(5) {
+    top: 32px;
+    left: 32px;
+    animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(6) {
+    top: 32px;
+    left: 56px;
+    animation-delay: -1.2s;
+}
+.lds-grid div:nth-child(7) {
+    top: 56px;
+    left: 8px;
+    animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(8) {
+    top: 56px;
+    left: 32px;
+    animation-delay: -1.2s;
+}
+.lds-grid div:nth-child(9) {
+    top: 56px;
+    left: 56px;
+    animation-delay: -1.6s;
+}
+@keyframes lds-grid {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
 }
